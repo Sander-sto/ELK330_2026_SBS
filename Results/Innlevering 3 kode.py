@@ -10,8 +10,8 @@ df = pd.read_csv(
 df["Dato"] = pd.to_datetime(df["Dato"],format="mixed",utc=True).dt.tz_convert("Europe/Oslo")
 
 
-#print(df["Dato"].dtype)
-#print(df.head())
+print(df["Dato"].dtype)
+print(df.head())
 
 #Oppgove 2
 df = df.set_index("Dato")
@@ -41,20 +41,23 @@ plt.show()
 
 
 #oppgave 6 : Beregn også
-sortert = df.sort_values(by = "Actual Load", ascending = False)
-print( "Den høyeste lasten og laveste lasten i 2025:")
-Maaned_høyest=sortert.head(1)
-Maaned_lavest=sortert.tail(1)
+maaned_maks = df["Actual Load"].resample("MS").max()
+maaned_min = df["Actual Load"].resample("MS").min()
+print( "Den høyeste lasten og laveste lasten i kvar månad i 2025:")
 Maaned_std = df["Actual Load"].resample("MS").std()
 print("Høyeste lasten i 2025:")
-print(Maaned_høyest)
+print(maaned_maks)
 
 print("Laveste lasten i 2025:")
-print(Maaned_lavest)
+print(maaned_min)
 
 print("Standardavviket for hver måned i 2025:")
 print(Maaned_std)
 
-Maaned_høyest.to_csv("Results/Høyes og laveste lasten 2025 og standardavvik.csv", index=False)
-Maaned_lavest.to_csv("Results/Høyes og laveste lasten 2025 og standardavvik.csv", index=False)
-Maaned_std.to_csv("Results/Høyes og laveste lasten 2025 og standardavvik.csv", index=False)
+info =pd.DataFrame({
+    "Maaned": oversikt["Maaned"],
+    "Høyeste Last": maaned_maks.values,
+    "Laveste Last": maaned_min.values,
+    "Standardavvik": Maaned_std.values
+})
+info.to_csv("Results/Høyes og laveste lasten 2025 og standardavvik.csv", index=False)
