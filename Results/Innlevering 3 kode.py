@@ -22,9 +22,7 @@ oversikt = Maaned_gjennomsnitt.reset_index()
 
 oversikt.columns = ["Maaned", "Gjennomsnitt"]
 
-maanedar=["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"]
-
-oversikt["Maaned"] = oversikt["Maaned"].dt.month.map(lambda x: maanedar[x - 1])
+oversikt["Maaned"] = oversikt["Maaned"].dt.month_name()
 
 print(oversikt)
 
