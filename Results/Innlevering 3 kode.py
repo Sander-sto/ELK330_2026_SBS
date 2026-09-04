@@ -17,8 +17,8 @@ df["Dato"] = pd.to_datetime(df["Dato"],format="mixed",utc=True).dt.tz_convert("E
 df = df.set_index("Dato")
 
 Maaned_gjennomsnitt = df["Actual Load"].resample("MS").mean()
+
 oversikt = Maaned_gjennomsnitt.reset_index()
-#print(Maaned_gjennomsnitt)
 
 oversikt.columns = ["Maaned", "Gjennomsnitt"]
 
@@ -32,4 +32,12 @@ print(oversikt)
 oversikt.to_csv("Results/manedlig_last_2025.csv", index=False)
 
 #oppgove 4
+plt.figure(figsize=(10, 6))
+plt.plot(oversikt["Maaned"], oversikt["Gjennomsnitt"], marker='o')
+plt.grid(True)
+plt.title("Gjennomsnittlig Månedlig Last for 2025")
+plt.xlabel("Måned")
+plt.ylabel("Gjennomsnittlig Last (MW)")
+plt.savefig("Results/manedlig_last_2025.png")
+plt.show()
 
