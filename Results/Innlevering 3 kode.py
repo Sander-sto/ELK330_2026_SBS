@@ -60,4 +60,4 @@ info =pd.DataFrame({
     "Laveste Last": maaned_min.values,
     "Standardavvik": Maaned_std.values
 })
-info.to_csv("Results/Høyes og laveste lasten 2025 og standardavvik.csv", index=False)
+info.to_csv("results/manedlig_last_statistikk_2025.csv", index=False)
