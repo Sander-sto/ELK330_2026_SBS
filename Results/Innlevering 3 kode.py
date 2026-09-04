@@ -41,3 +41,22 @@ plt.ylabel("Gjennomsnittlig Last (MW)")
 plt.savefig("Results/manedlig_last_2025.png")
 plt.show()
 
+
+#oppgave 6 : Beregn også
+sortert = df.sort_values(by = "Actual Load", ascending = False)
+print( "Den høyeste lasten og laveste lasten i 2025:")
+Maaned_høyest=sortert.head(1)
+Maaned_lavest=sortert.tail(1)
+Maaned_std = df["Actual Load"].resample("MS").std()
+print("Høyeste lasten i 2025:")
+print(Maaned_høyest)
+
+print("Laveste lasten i 2025:")
+print(Maaned_lavest)
+
+print("Standardavviket for hver måned i 2025:")
+print(Maaned_std)
+
+Maaned_høyest.to_csv("Results/Høyes og laveste lasten 2025 og standardavvik.csv", index=False)
+Maaned_lavest.to_csv("Results/Høyes og laveste lasten 2025 og standardavvik.csv", index=False)
+Maaned_std.to_csv("Results/Høyes og laveste lasten 2025 og standardavvik.csv", index=False)
