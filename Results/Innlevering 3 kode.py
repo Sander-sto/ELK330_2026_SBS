@@ -29,4 +29,7 @@ oversikt["Maaned"] = oversikt["Maaned"].dt.month.map(lambda x: maanedar[x - 1])
 print(oversikt)
 
 #Oppgove 3
+oversikt.to_csv("Results/manedlig_last_2025.csv", index=False)
+
+#oppgove 4
 

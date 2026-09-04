@@ -1,29 +1,13 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import time
-from datetime import datetime,timezone
-#oppggave 1
-df = pd.read_csv(
-    r"C:\Users\Sande\OneDrive - Universitetet i Stavanger\Documents\GitHub\power-system-data\load\forbruk_2025.csv"
-)
-df["Dato"] = pd.to_datetime(df["Dato"],format="mixed",utc=True).dt.tz_convert("Europe/Oslo")
-
-
-#print(df["Dato"].dtype)
-#print(df.head())
-
-#Oppgove 2
-df = df.set_index("Dato")
-
-Maaned_gjennomsnitt = df["Actual Load"].resample("MS").mean()
-oversikt = Maaned_gjennomsnitt.reset_index()
-#print(Maaned_gjennomsnitt)
-
-oversikt.columns = ["Maaned", "Gjennomsnitt"]
-
-maanedar=["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"]
-
-oversikt["Maaned"] = oversikt["Maaned"].dt.month.map(lambda x: maanedar[x - 1])
-
-print(oversikt)
+Maaned,Gjennomsnitt
+Januar,19879.881639784944
+Februar,19412.604508928573
+Mars,17037.830959885385
+April,15090.058052083332
+Mai,13554.92872311828
+Juni,12772.586045138889
+Juli,12121.255987903225
+August,12981.764398521505
+September,13415.95540625
+Oktober,15191.476335570469
+November,17606.890677083335
+Desember,18152.642590725805
