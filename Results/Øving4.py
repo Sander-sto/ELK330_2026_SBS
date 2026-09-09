@@ -22,7 +22,7 @@ df["Netto"] = (
 )
 
 #print(df.head(5))
-
+'''''
 max_dato_df=df["Production"].idxmax()
 max_df=df["Production"].max()
 print("Dato",max_dato_df,"Maksimum",max_df)
@@ -33,8 +33,16 @@ print("Dato",min_dato_df,"Minimum",min_df)
 
 gjennomsnitt_df=df["Production"].mean()
 print("Gjennomsnitt",gjennomsnitt_df)
+'''''
 
+max_netto_dato_df=df["Netto"].idxmax()
+max_netto_df=df["Netto"].max()
 
+min_netto_dato_df=df["Netto"].idxmin()
+min_netto_df=df["Netto"].min()
+
+print("Maksimum netto",max_netto_df,"Dato",max_netto_dato_df)
+print("Minimum netto",min_netto_df,"Dato",min_netto_dato_df)
 
 
 
