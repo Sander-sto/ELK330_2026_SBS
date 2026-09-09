@@ -21,8 +21,27 @@ df["Netto"] = (
     - df["Consumption"]
 )
 
-print(df.head(5))
+#print(df.head(5))
 
+max_dato_df=df["Production"].idxmax()
+max_df=df["Production"].max()
+print("Dato",max_dato_df,"Maksimum",max_df)
+
+min_dato_df=df["Production"].idxmin()
+min_df=df["Production"].min()
+print("Dato",min_dato_df,"Minimum",min_df)
+
+gjennomsnitt_df=df["Production"].mean()
+print("Gjennomsnitt",gjennomsnitt_df)
+
+
+
+
+
+
+
+
+'''''
 dags_profil.plot(
     y=["Consumption"],
     figsize=(10, 5)
@@ -35,3 +54,4 @@ plt.grid(True)
 plt.legend()
 
 plt.show()
+'''''
