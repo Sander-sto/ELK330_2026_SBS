@@ -43,15 +43,49 @@ min_netto_df=df["Netto"].min()
 
 print("Maksimum netto",max_netto_df,"Dato",max_netto_dato_df)
 print("Minimum netto",min_netto_df,"Dato",min_netto_dato_df)
-'''''
+
 produksjon_sum_MWh=df["Production"].sum()
 produksjon_sum_TWH=produksjon_sum_MWh/1000000
 
 print("Total produksjon i MWH",produksjon_sum_MWh,"Total produksjon i TWH",produksjon_sum_TWH)
 
+dags_profil.plot(
+    y=["Consumption"],
+    figsize=(10, 5)
+)
 
+plt.title("Forbruk")
+plt.xlabel("Tid")
+plt.ylabel("Effekt [MW]")
+plt.grid(True)
+plt.legend()
+plt.show()
 
+df.plot(
+    y=["Production", "Consumption"],
+    figsize=(10, 5)
+)
+plt.title("Produksjon og forbruk")
+plt.xlabel("Tid")
+plt.ylabel("Effekt [MW]")
+plt.grid(True)
+plt.legend()
+plt.text(x=0.5, y=0.9, s="Produksjon og forbruk", transform=plt.gca().transAxes, fontsize=12, ha="center")
+plt.show()
 
+'''
+
+df.plot(
+    y=["Production", "Consumption","Netto"],
+    figsize=(10, 5)
+)
+plt.title("Produksjon, forbruk og nettoeffekt")
+plt.xlabel("Tid")
+plt.ylabel("Effekt [MW]")
+plt.grid(True)
+plt.legend()
+plt.text(x=0.5, y=0.9, s="Produksjon, forbruk og netto", transform=plt.gca().transAxes, fontsize=12, ha="center")
+plt.show()
 
 '''''
 dags_profil.plot(
