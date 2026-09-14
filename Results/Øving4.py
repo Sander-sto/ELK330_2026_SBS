@@ -10,7 +10,7 @@ df = pd.read_csv(
 df["Time(Local)"] = pd.to_datetime(df["Time(Local)"], format="%d.%m.%Y %H:%M:%S %z",utc=True).dt.tz_convert("Europe/Oslo")
 
 df = df.set_index("Time(Local)")
-#print(df.head(5))
+print(df.head(5))
 #print(df.index[500])
 #print(df.loc["2026-01-01 03:00"])
 
@@ -48,7 +48,7 @@ produksjon_sum_MWh=df["Production"].sum()
 produksjon_sum_TWH=produksjon_sum_MWh/1000000
 
 print("Total produksjon i MWH",produksjon_sum_MWh,"Total produksjon i TWH",produksjon_sum_TWH)
-
+'''
 dags_profil.plot(
     y=["Consumption"],
     figsize=(10, 5)
@@ -60,7 +60,7 @@ plt.ylabel("Effekt [MW]")
 plt.grid(True)
 plt.legend()
 plt.show()
-
+'''
 df.plot(
     y=["Production", "Consumption"],
     figsize=(10, 5)
@@ -87,17 +87,3 @@ plt.legend()
 plt.text(x=0.5, y=0.9, s="Produksjon, forbruk og netto", transform=plt.gca().transAxes, fontsize=12, ha="center")
 plt.show()
 
-'''''
-dags_profil.plot(
-    y=["Consumption"],
-    figsize=(10, 5)
-)
-
-plt.title("Forbruk")
-plt.xlabel("Tid")
-plt.ylabel("Effekt [MW]")
-plt.grid(True)
-plt.legend()
-
-plt.show()
-'''''
