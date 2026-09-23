@@ -7,12 +7,12 @@ import matplotlib.dates as mdates
 
 
 #Del1
-'''
+
 t = np.linspace(0, 24, 500)
 
-A = 800
-mu = 13.5
-sigma = 4
+A = 1100
+mu = 11.25
+sigma = 3.5
 
 G = A * np.exp(-(t - mu)**2 / (2 * sigma**2))
 G_max = np.max(G)
@@ -26,7 +26,7 @@ plt.legend()
 plt.plot(t, G_max * np.ones_like(t), "r--", label="Maksimal innstråling")
 plt.legend()
 plt.show()
-'''
+
 
 #Del2
 
@@ -59,8 +59,13 @@ plt.ylabel("Innstråling [W/m²]")
 plt.show()
 
 
-sol_2023_08_08=Sol_2023.loc["2023-08-08"]
-plt.plot(sol_2023_08_08.index, sol_2023_08_08["G(i)"])
+
+#Del 3
+sol_2023_06_08=Sol_2023.loc["2023-06-08"]
+tid_G = sol_2023_06_08.index[0].normalize() + pd.to_timedelta(t, unit="h")
+
+plt.plot(sol_2023_06_08.index, sol_2023_06_08["G(i)"],label="Målt innstråling")
+plt.plot(tid_G, G,label="Gauss kurve")
 plt.grid(True)
 plt.xlabel("Tid")
 plt.ylabel("Innstråling [W/m²]")
@@ -71,5 +76,6 @@ ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))
 
 plt.xticks(rotation=45)
 plt.tight_layout()
+plt.legend()
 
 plt.show()
