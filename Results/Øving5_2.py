@@ -32,6 +32,7 @@ Mu2=18 #Tidspunktet for topp
 sigma2=3 #Breddeparameteren til komponent
 Kveld_plott =L0 +A2*np.exp(-((t-Mu2)**2/(2*sigma2**2)))
 #tredhe komponent natt
+
 A3=-1700 #Amplituden til komponent i
 mu3=4 #Tidspunktet for topp
 sigma3=2 #Breddeparameteren til komponent
@@ -48,7 +49,7 @@ plt.plot(
 plt.xlabel("Tid [T]")
 plt.xticks(np.arange(0, 24, 1))
 plt.ylabel("Last")
-plt.title("Dagsprofil 17.02.2022 - Målt forbruk")
+plt.title("Dagsprofil 17.02.2022 - observerte data")
 plt.grid()
 plt.legend()
 
@@ -62,7 +63,7 @@ plt.plot(
 plt.xlabel("Tid [T]")
 plt.xticks(np.arange(0, 24, 1))
 plt.ylabel("Last")
-plt.title("Dagsprofil 17.02.2022 - Modell")
+plt.title("Dagsprofil 17.02.2022 - Modell kurve")
 plt.grid()
 plt.legend()
 plt.show()
@@ -98,7 +99,7 @@ plt.plot(
 plt.xlabel("Tid [T]")
 plt.xticks(np.arange(0, 24, 1))
 plt.ylabel("Last")
-plt.title("Dagsprofil 17.02.2022 Modell og målt forbruk")
+plt.title("Dagsprofil 17.02.2022 Modell og observerte data")
 plt.grid()
 plt.legend()
 
