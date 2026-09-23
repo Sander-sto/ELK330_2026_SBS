@@ -12,7 +12,7 @@ t = np.linspace(0, 24, 500)
 
 A = 1100
 mu = 11.25
-sigma = 3.5
+sigma = 3.45
 
 G = A * np.exp(-(t - mu)**2 / (2 * sigma**2))
 G_max = np.max(G)
